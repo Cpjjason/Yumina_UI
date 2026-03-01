@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { MapPin, Link as LinkIcon, Calendar, Edit3, Settings, Share2, Play, Heart, Clock, Award, ChevronRight, Grid, List } from "lucide-react";
+import { MapPin, Link as LinkIcon, Calendar, Edit3, Settings, Share2, Play, Heart, Clock, Award, ChevronRight, Grid, List, Eye, Shield } from "lucide-react";
 import { useState } from "react";
 
 export default function Profile() {
@@ -135,7 +135,7 @@ export default function Profile() {
               
               {/* Custom Tabs */}
               <div className="flex gap-8 border-b border-white/10 mb-8">
-                {['overview', 'works', 'followed', 'activity'].map((tab) => (
+                {['overview', 'works', 'followed', 'activity', 'settings'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -323,6 +323,81 @@ export default function Profile() {
                 <div className="h-64 flex flex-col items-center justify-center text-sub border border-white/5 rounded-2xl bg-white/[0.01] animate-in fade-in duration-500">
                   <Clock className="w-10 h-10 mb-4 opacity-20" />
                   <p>Content for {activeTab} will appear here.</p>
+                </div>
+              )}
+
+              {activeTab === 'settings' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl">
+                  <div className="mb-6">
+                    <h2 className="text-xl font-bold text-main mb-1">Account Settings</h2>
+                    <p className="text-sm text-sub">Manage your account preferences and content filters.</p>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    {/* Content Filter Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
+                          <Eye className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-main text-lg">Content Filtering</h3>
+                          <p className="text-xs text-sub">Control what type of content you see on the platform.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div>
+                            <div className="font-semibold text-main">Show 18+ Content</div>
+                            <div className="text-xs text-sub mt-1">Allow display of mature and sensitive content.</div>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" className="sr-only peer" />
+                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
+                          </label>
+                        </div>
+
+                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div>
+                            <div className="font-semibold text-main">Blur Sensitive Media</div>
+                            <div className="text-xs text-sub mt-1">Automatically blur potentially sensitive images until clicked.</div>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" className="sr-only peer" defaultChecked />
+                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Privacy Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
+                          <Shield className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-main text-lg">Privacy</h3>
+                          <p className="text-xs text-sub">Manage who can interact with you.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div>
+                            <div className="font-semibold text-main">Private Profile</div>
+                            <div className="text-xs text-sub mt-1">Only followers can see your activity and works.</div>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" className="sr-only peer" />
+                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               )}
 
