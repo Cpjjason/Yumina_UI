@@ -306,6 +306,61 @@ export default function Profile() {
                     </div>
                   </section>
 
+                  {/* Reviews & Activity */}
+                  <section>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gold rounded-full"></div>
+                        Recent Reviews
+                      </h2>
+                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                        View All <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-gold/30 hover:bg-white/[0.04] transition-all">
+                        <div className="flex gap-4">
+                          <img src="/images/game2.png" className="w-16 h-16 rounded-xl object-cover" alt="Crimson Protocol" 
+                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
+                          />
+                          <div className="flex-1">
+                            <div className="flex justify-between items-start mb-1">
+                              <h4 className="font-bold text-main">Crimson Protocol</h4>
+                              <span className="text-xs text-sub">3 days ago</span>
+                            </div>
+                            <div className="flex text-gold mb-2 text-sm">
+                              ★★★★★
+                            </div>
+                            <p className="text-sm text-sub leading-relaxed line-clamp-2">
+                              The combat system is incredibly deep. I spent over 40 hours just experimenting with different build combinations. The art style matches the grimdark aesthetic perfectly. Highly recommended for fans of tactical RPGs.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-gold/30 hover:bg-white/[0.04] transition-all">
+                        <div className="flex gap-4">
+                          <div className="w-16 h-16 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
+                            <Award className="w-8 h-8 text-sub/50" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex justify-between items-start mb-1">
+                              <h4 className="font-bold text-main">Astral Archives</h4>
+                              <span className="text-xs text-sub">1 week ago</span>
+                            </div>
+                            <div className="flex text-gold mb-2 text-sm">
+                              ★★★★☆
+                            </div>
+                            <p className="text-sm text-sub leading-relaxed line-clamp-2">
+                              Great deckbuilding mechanics with a steep but rewarding learning curve. The story gets really interesting around chapter 2. Docking one star because some late-game bosses feel a bit RNG-heavy, but overall a solid experience.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
                   {/* Collections / Favorites */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
