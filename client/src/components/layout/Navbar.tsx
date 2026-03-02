@@ -1,6 +1,10 @@
 import { Search, Filter, CalendarDays, Bell, HelpCircle, Moon, User } from "lucide-react";
+import { useLocation } from "wouter";
 
 export function Navbar() {
+  const [location] = useLocation();
+  const isProfile = location === "/" || location === "/profile";
+
   return (
     <nav className="fixed top-0 left-0 right-0 h-[64px] bg-black/60 backdrop-blur-[24px] z-50 flex items-center justify-between px-6 border-b border-white/5">
       {/* Logo Section */}
@@ -14,7 +18,7 @@ export function Navbar() {
       </div>
 
       {/* Search Section */}
-      <div className="flex-1 max-w-2xl flex items-center gap-6">
+      <div className={`flex-1 max-w-2xl flex items-center gap-6 ${isProfile ? 'invisible' : ''}`}>
         <div className="relative w-full max-w-md">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
           <input 
