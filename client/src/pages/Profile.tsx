@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { MapPin, Link as LinkIcon, Calendar, Edit3, Settings, Share2, Play, Heart, Clock, Award, ChevronRight, Grid, List, Eye, Shield, Globe, Sliders, Database, Key, Check, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import EditProfile from "@/components/profile/EditProfile";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -74,7 +75,10 @@ export default function Profile() {
                 <Share2 className="w-4 h-4" />
                 Share
               </button>
-              <button className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-main font-semibold text-sm transition-colors border border-white/10 flex items-center gap-2">
+              <button 
+                onClick={() => setActiveTab('settings')}
+                className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-main font-semibold text-sm transition-colors border border-white/10 flex items-center gap-2"
+              >
                 <Settings className="w-4 h-4" />
                 Edit Profile
               </button>
@@ -484,182 +488,8 @@ export default function Profile() {
               )}
 
               {activeTab === 'settings' && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl">
-                  <div className="mb-6">
-                    <h2 className="text-xl font-bold text-main mb-1">Account Settings</h2>
-                    <p className="text-sm text-sub">Manage your account preferences and content filters.</p>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    {/* Content Filter Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                          <Eye className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-main text-lg">Content Filtering</h3>
-                          <p className="text-xs text-sub">Control what type of content you see on the platform.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div>
-                            <div className="font-semibold text-main">Show 18+ Content</div>
-                            <div className="text-xs text-sub mt-1">Allow display of mature and sensitive content.</div>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" className="sr-only peer" />
-                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
-                          </label>
-                        </div>
-
-                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div>
-                            <div className="font-semibold text-main">Blur Sensitive Media</div>
-                            <div className="text-xs text-sub mt-1">Automatically blur potentially sensitive images until clicked.</div>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" className="sr-only peer" defaultChecked />
-                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Privacy Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                          <Shield className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-main text-lg">Privacy</h3>
-                          <p className="text-xs text-sub">Manage who can interact with you.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div>
-                            <div className="font-semibold text-main">Private Profile</div>
-                            <div className="text-xs text-sub mt-1">Only followers can see your activity and works.</div>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" className="sr-only peer" />
-                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Personalization Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                          <Globe className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-main text-lg">Personalization</h3>
-                          <p className="text-xs text-sub">Language and regional preferences.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div>
-                            <div className="font-semibold text-main">Language</div>
-                            <div className="text-xs text-sub mt-1">Select your preferred language.</div>
-                          </div>
-                          <select className="bg-white/5 border border-white/10 text-main text-sm rounded-lg focus:ring-gold focus:border-gold block p-2 outline-none cursor-pointer">
-                            <option value="en">English (US)</option>
-                            <option value="zh">中文 (简体)</option>
-                            <option value="ja">日本語</option>
-                            <option value="ko">한국語</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Account Links Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                          <LinkIcon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-main text-lg">Connected Accounts</h3>
-                          <p className="text-xs text-sub">Manage your linked social accounts and platforms.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div className="flex items-center gap-4">
-                            <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
-                              <span className="font-bold text-sm">X</span>
-                            </div>
-                            <div>
-                              <div className="font-semibold text-main">Twitter (X)</div>
-                              <div className="text-xs text-sub mt-1 text-gold">@noxlumina_dev</div>
-                            </div>
-                          </div>
-                          <button className="px-4 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-sm font-semibold transition-colors">
-                            Disconnect
-                          </button>
-                        </div>
-
-                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div className="flex items-center gap-4">
-                            <div className="w-8 h-8 rounded bg-[#5865F2] flex items-center justify-center text-white">
-                              <span className="font-bold text-sm">D</span>
-                            </div>
-                            <div>
-                              <div className="font-semibold text-main">Discord</div>
-                              <div className="text-xs text-sub mt-1">Not connected</div>
-                            </div>
-                          </div>
-                          <button className="px-4 py-1.5 rounded-lg bg-gold hover:bg-[#FCE38A] text-black text-sm font-bold transition-colors">
-                            Connect
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Notification Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                          <Clock className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-main text-lg">Notifications</h3>
-                          <p className="text-xs text-sub">How we contact you about activity on your account.</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
-                          <div>
-                            <div className="font-semibold text-main">Email Notifications</div>
-                            <div className="text-xs text-sub mt-1">Receive an email when someone comments on your work.</div>
-                          </div>
-                          <label className="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" className="sr-only peer" defaultChecked />
-                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-6 mt-6 border-t border-white/10 flex justify-end">
-                      <button className="px-6 py-2 rounded-xl bg-gold hover:bg-[#FCE38A] text-black font-bold transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)]">
-                        Save Changes
-                      </button>
-                    </div>
-
-                  </div>
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  <EditProfile />
                 </div>
               )}
 
