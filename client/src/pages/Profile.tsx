@@ -122,8 +122,8 @@ export default function Profile() {
                     <div className="text-xl font-bold text-main">248</div>
                   </div>
                   <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Total Plays</div>
-                    <div className="text-xl font-bold text-main">280K</div>
+                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Library</div>
+                    <div className="text-xl font-bold text-main">156</div>
                   </div>
                   <div>
                     <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Likes</div>
@@ -168,55 +168,43 @@ export default function Profile() {
               {activeTab === 'overview' && (
                 <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   
-                  {/* Jump Back In (Player Focus) */}
+
+
+                  {/* Recently Played */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
                         <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Jump Back In
+                        Recently Played
                       </h2>
+                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                        View All <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
                     
-                    <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-gold/30 transition-colors h-auto md:h-64">
-                      <div className="w-full md:w-2/5 aspect-video md:aspect-auto relative overflow-hidden">
-                        <img 
-                          src="/images/game1.png" 
-                          alt="Echoes of Eternity" 
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                          onError={(e) => {
-                            e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop";
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-base/90 hidden md:block" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-base/90 to-transparent md:hidden" />
-                      </div>
-                      <div className="p-6 md:w-3/5 flex flex-col justify-center">
-                        <div className="flex justify-between items-start mb-2">
-                          <div>
-                            <h3 className="text-2xl font-bold text-main">Echoes of Eternity</h3>
-                            <p className="text-sub text-sm mt-1">Chapter 3: The Lost City</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {works.map(work => (
+                        <div key={`played-${work.id}`} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all hover:bg-white/[0.04]">
+                          <div className="aspect-[16/9] overflow-hidden relative">
+                            <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                              onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
+                            />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <div className="w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center backdrop-blur-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <Play className="w-5 h-5 ml-1" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <div className="flex justify-between items-start mb-1">
+                              <h4 className="font-bold text-main group-hover:text-gold transition-colors">{work.title}</h4>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-sub/60 mt-2">
+                              <Clock className="w-3.5 h-3.5" /> <span>Played {work.id * 2} hours ago</span>
+                            </div>
                           </div>
                         </div>
-                        
-                        <div className="mt-6 mb-2">
-                          <div className="flex justify-between text-xs mb-1">
-                            <span className="text-gold font-medium">65% Completed</span>
-                            <span className="text-sub">12h 45m</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                            <div className="h-full bg-gold rounded-full w-[65%]" />
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-center justify-between mt-4">
-                          <div className="flex items-center gap-2 text-xs text-sub/60">
-                            <Clock className="w-3.5 h-3.5" /> <span>Last played yesterday</span>
-                          </div>
-                          <button className="bg-gold hover:bg-[#FCE38A] text-black px-6 py-2 rounded-xl text-sm font-bold transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)] flex items-center gap-2">
-                            <Play className="w-4 h-4" fill="currentColor" /> Continue
-                          </button>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </section>
 
@@ -268,43 +256,7 @@ export default function Profile() {
                     </div>
                   </section>
 
-                  {/* Recently Played */}
-                  <section>
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Recently Played
-                      </h2>
-                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
-                        View All <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                      {works.map(work => (
-                        <div key={`played-${work.id}`} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all hover:bg-white/[0.04]">
-                          <div className="aspect-[16/9] overflow-hidden relative">
-                            <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                              onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
-                            />
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center backdrop-blur-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                                <Play className="w-5 h-5 ml-1" />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="p-4">
-                            <div className="flex justify-between items-start mb-1">
-                              <h4 className="font-bold text-main group-hover:text-gold transition-colors">{work.title}</h4>
-                            </div>
-                            <div className="flex items-center gap-2 text-xs text-sub/60 mt-2">
-                              <Clock className="w-3.5 h-3.5" /> <span>Played {work.id * 2} hours ago</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
+
 
                   {/* Reviews & Activity */}
                   <section>
