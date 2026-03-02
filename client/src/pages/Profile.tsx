@@ -208,12 +208,12 @@ export default function Profile() {
                     </div>
                   </section>
 
-                  {/* Recent Achievements */}
+                  {/* Achievements */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
                         <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Recent Achievements
+                        Achievements
                       </h2>
                       <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
                         View All <ChevronRight className="w-4 h-4" />
