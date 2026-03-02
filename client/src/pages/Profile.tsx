@@ -112,7 +112,7 @@ export default function Profile() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Followers</div>
-                    <div className="text-xl font-bold text-main">12.5K</div>
+                    <div className="text-xl font-bold text-main">14.2K</div>
                   </div>
                   <div>
                     <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Following</div>
