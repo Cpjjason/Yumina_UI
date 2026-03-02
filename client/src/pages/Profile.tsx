@@ -11,12 +11,6 @@ export default function Profile() {
     { id: 3, title: "Astral Archives", genre: "Card Game", plays: "45.1K", likes: "12K", image: "/images/game3.png" },
   ];
 
-  const following = [
-    { id: 1, name: "Kaelen Arts", role: "Illustrator", image: "/images/author1.png" },
-    { id: 2, name: "Nova Studios", role: "Developer", image: "/images/author2.png" },
-    { id: 3, name: "Zephyr", role: "Writer", image: "/images/avatar.png" },
-  ];
-
   return (
     <Layout>
       <div className="pb-20">
@@ -60,9 +54,9 @@ export default function Profile() {
               <div className="mb-2">
                 <h1 className="text-3xl font-black text-main flex items-center gap-3">
                   Nox_Lumina
-                  <span className="text-xs font-bold bg-gold/10 text-gold px-2 py-1 rounded-md uppercase tracking-wider">Creator</span>
+                  <span className="text-xs font-bold bg-[#818cf8]/10 text-[#818cf8] px-2 py-1 rounded-md uppercase tracking-wider">Lv. 42 Explorer</span>
                 </h1>
-                <p className="text-sub mt-1">@noxlumina_dev</p>
+                <p className="text-sub mt-1">@noxlumina_player</p>
               </div>
             </div>
 
@@ -76,7 +70,7 @@ export default function Profile() {
                 Edit Profile
               </button>
               <button className="px-6 py-2 rounded-xl bg-gold hover:bg-[#FCE38A] text-black font-bold text-sm transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)]">
-                Follow
+                Add Friend
               </button>
             </div>
           </div>
@@ -88,7 +82,7 @@ export default function Profile() {
               <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
                 <h3 className="text-sm font-bold text-main mb-3">About</h3>
                 <p className="text-sm text-sub leading-relaxed mb-6">
-                  Indie game developer specializing in atmospheric RPGs and visual novels. Building worlds where dreams and nightmares collide.
+                  RPG enthusiast and 100% completionist. Always looking for the next great adventure and collecting rare digital artifacts.
                 </p>
                 
                 <div className="space-y-3 text-sm text-sub/80">
@@ -98,7 +92,7 @@ export default function Profile() {
                   </div>
                   <div className="flex items-center gap-3">
                     <LinkIcon className="w-4 h-4 text-gold/70" />
-                    <a href="#" className="text-gold hover:underline">noxlumina.com</a>
+                    <a href="#" className="text-gold hover:underline">steam/noxlumina</a>
                   </div>
                   <div className="flex items-center gap-3">
                     <Calendar className="w-4 h-4 text-gold/70" />
@@ -108,35 +102,35 @@ export default function Profile() {
               </div>
 
               <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-main mb-4">Platform Stats</h3>
+                <h3 className="text-sm font-bold text-main mb-4">Player Stats</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Followers</div>
-                    <div className="text-xl font-bold text-main">14.2K</div>
+                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Games Owned</div>
+                    <div className="text-xl font-bold text-main">142</div>
                   </div>
                   <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Following</div>
-                    <div className="text-xl font-bold text-main">248</div>
+                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Hours Played</div>
+                    <div className="text-xl font-bold text-main">1,204</div>
                   </div>
                   <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Total Plays</div>
-                    <div className="text-xl font-bold text-main">280K</div>
+                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Badges</div>
+                    <div className="text-xl font-bold text-main">48</div>
                   </div>
                   <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Likes</div>
-                    <div className="text-xl font-bold text-main">45K</div>
+                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Friends</div>
+                    <div className="text-xl font-bold text-main">126</div>
                   </div>
                 </div>
               </div>
               
               <button className="w-full mt-4 flex items-center justify-between px-4 py-3 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:bg-white/[0.05] rounded-xl transition-all group">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold/20 transition-colors">
-                    <Edit3 className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-lg bg-[#818cf8]/10 flex items-center justify-center text-[#818cf8] group-hover:bg-[#818cf8]/20 transition-colors">
+                    <Grid className="w-4 h-4" />
                   </div>
-                  <span className="font-semibold text-sm text-main">Creator Hub</span>
+                  <span className="font-semibold text-sm text-main">Full Game Library</span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-sub group-hover:text-gold transition-colors" />
+                <ChevronRight className="w-4 h-4 text-sub group-hover:text-[#818cf8] transition-colors" />
               </button>
             </div>
 
@@ -145,7 +139,7 @@ export default function Profile() {
               
               {/* Custom Tabs */}
               <div className="flex gap-8 border-b border-white/10 mb-8">
-                {['overview', 'works', 'followed', 'activity', 'settings', 'config'].map((tab) => (
+                {['overview', 'activity', 'collections', 'settings'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -169,12 +163,12 @@ export default function Profile() {
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Featured Work
+                        <div className="w-1 h-4 bg-[#818cf8] rounded-full"></div>
+                        Current Obsession
                       </h2>
                     </div>
                     
-                    <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-gold/30 transition-colors">
+                    <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-[#818cf8]/30 transition-colors">
                       <div className="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden">
                         <img 
                           src="/images/game3.png" 
@@ -184,8 +178,9 @@ export default function Profile() {
                             e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop";
                           }}
                         />
-                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-gold uppercase tracking-wider">
-                          Editor's Choice
+                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-[#818cf8] uppercase tracking-wider flex items-center gap-1.5">
+                          <Clock className="w-3 h-3" />
+                          Playing Now
                         </div>
                       </div>
                       <div className="p-6 md:w-3/5 flex flex-col justify-between">
@@ -197,16 +192,16 @@ export default function Profile() {
                             </div>
                           </div>
                           <p className="text-sub text-sm leading-relaxed mb-6 line-clamp-3">
-                            Dive into the ancient astral library. Collect forbidden spells, battle corrupted guardians, and uncover the mysteries of the universe in this strategic deck-builder with deep lore.
+                            Currently grinding for the hidden legendary cards. The mechanics in the second chapter get crazy deep. Highly recommend running a shadow-deck build if you're stuck on the Chapter 3 boss.
                           </p>
                         </div>
                         <div className="flex items-center justify-between mt-auto">
                           <div className="flex items-center gap-4 text-sm text-sub/80">
-                            <div className="flex items-center gap-1.5"><Play className="w-4 h-4 text-white/40" /> 45.1K Plays</div>
-                            <div className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-white/40" /> 12K Likes</div>
+                            <div className="flex items-center gap-1.5 text-main font-medium"><Clock className="w-4 h-4 text-[#818cf8]" /> 84 Hours</div>
+                            <div className="flex items-center gap-1.5"><Award className="w-4 h-4 text-gold" /> 24/30 Achievements</div>
                           </div>
-                          <button className="bg-white/10 hover:bg-white/20 text-main px-6 py-2 rounded-xl text-sm font-semibold transition-colors">
-                            Play Now
+                          <button className="bg-white/10 hover:bg-white/20 text-main px-6 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2">
+                            <Play className="w-4 h-4" /> Join Game
                           </button>
                         </div>
                       </div>
@@ -217,33 +212,36 @@ export default function Profile() {
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
+                        <div className="w-1 h-4 bg-[#818cf8] rounded-full"></div>
                         Recently Played
                       </h2>
-                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                      <button className="text-sm font-semibold text-sub hover:text-[#818cf8] transition-colors flex items-center gap-1">
                         View All <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                       {works.map(work => (
-                        <div key={`played-${work.id}`} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all hover:bg-white/[0.04]">
+                        <div key={`played-${work.id}`} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-[#818cf8]/30 transition-all hover:bg-white/[0.04] cursor-pointer">
                           <div className="aspect-[16/9] overflow-hidden relative">
                             <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
                             />
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <div className="w-12 h-12 rounded-full bg-gold/90 text-black flex items-center justify-center backdrop-blur-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                              <div className="w-12 h-12 rounded-full bg-[#818cf8]/90 text-white flex items-center justify-center backdrop-blur-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
                                 <Play className="w-5 h-5 ml-1" />
                               </div>
+                            </div>
+                            <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-md px-2 py-1 rounded text-[10px] font-medium text-white/80">
+                              {work.id * 15} hrs
                             </div>
                           </div>
                           <div className="p-4">
                             <div className="flex justify-between items-start mb-1">
-                              <h4 className="font-bold text-main group-hover:text-gold transition-colors">{work.title}</h4>
+                              <h4 className="font-bold text-main group-hover:text-[#818cf8] transition-colors line-clamp-1">{work.title}</h4>
                             </div>
                             <div className="flex items-center gap-2 text-xs text-sub/60 mt-2">
-                              <Clock className="w-3.5 h-3.5" /> <span>Played {work.id * 2} hours ago</span>
+                              <Clock className="w-3.5 h-3.5" /> <span>Last played {work.id * 2} days ago</span>
                             </div>
                           </div>
                         </div>
@@ -251,116 +249,85 @@ export default function Profile() {
                     </div>
                   </section>
 
-                  {/* Collections / Favorites */}
+                  {/* Badges / Showcase */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Collections & Favorites
+                        <div className="w-1 h-4 bg-[#818cf8] rounded-full"></div>
+                        Achievement Showcase
                       </h2>
-                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                    </div>
+                    
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex flex-wrap gap-4">
+                        {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+                          <div key={i} className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center group hover:bg-white/10 transition-colors cursor-pointer relative">
+                            <Award className={`w-8 h-8 ${i === 1 ? 'text-gold' : i === 2 ? 'text-[#818cf8]' : i === 3 ? 'text-rose-400' : 'text-sub'}`} />
+                            
+                            {/* Tooltip */}
+                            <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity bg-black/90 border border-white/10 text-xs px-3 py-1.5 rounded whitespace-nowrap z-10 pointer-events-none">
+                              Rare Badge #{i}
+                            </div>
+                          </div>
+                        ))}
+                        <div className="w-16 h-16 rounded-xl bg-white/[0.01] border border-white/5 border-dashed flex items-center justify-center text-sub/50">
+                          +{48 - 7}
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+                  {/* Reviews / Feedback */}
+                  <section>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                        <div className="w-1 h-4 bg-[#818cf8] rounded-full"></div>
+                        Recent Reviews
+                      </h2>
+                      <button className="text-sm font-semibold text-sub hover:text-[#818cf8] transition-colors flex items-center gap-1">
                         View All <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>
                     
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all cursor-pointer">
-                        <div className="aspect-square bg-gradient-to-br from-gold/20 to-base p-4 flex flex-col justify-end relative overflow-hidden">
-                          <Heart className="w-6 h-6 text-gold mb-2" fill="currentColor" />
-                          <h4 className="font-bold text-main relative z-10">Favorite Games</h4>
-                          <span className="text-xs text-sub relative z-10">24 Items</span>
-                          <div className="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2"></div>
-                        </div>
-                      </div>
-                      
-                      <div className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all cursor-pointer">
-                        <div className="aspect-square bg-gradient-to-br from-[#818cf8]/20 to-base p-4 flex flex-col justify-end relative overflow-hidden">
-                          <Clock className="w-6 h-6 text-[#818cf8] mb-2" />
-                          <h4 className="font-bold text-main relative z-10">Play Later</h4>
-                          <span className="text-xs text-sub relative z-10">12 Items</span>
-                          <div className="absolute top-0 right-0 w-24 h-24 bg-[#818cf8]/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                  
-                  {/* Followed Authors */}
-                  <section>
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Followed Creators
-                      </h2>
-                    </div>
-                    
-                    <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-                      {following.map(user => (
-                        <div key={user.id} className="min-w-[140px] bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col items-center text-center hover:bg-white/[0.05] transition-colors cursor-pointer group">
-                          <img src={user.image} alt={user.name} className="w-16 h-16 rounded-full object-cover mb-3 ring-2 ring-transparent group-hover:ring-gold/50 transition-all" 
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"; }}
-                          />
-                          <h5 className="font-bold text-sm text-main group-hover:text-gold transition-colors">{user.name}</h5>
-                          <span className="text-xs text-sub mt-1">{user.role}</span>
-                        </div>
-                      ))}
-                      
-                      <div className="min-w-[140px] bg-white/[0.01] border border-white/5 border-dashed rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/[0.03] transition-colors cursor-pointer text-sub hover:text-main">
-                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-2">
-                          <ChevronRight className="w-5 h-5" />
-                        </div>
-                        <span className="text-xs font-semibold">View All 248</span>
-                      </div>
-                    </div>
-                  </section>
-
-                </div>
-              )}
-
-              {activeTab === 'works' && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex gap-2">
-                      <button className="px-4 py-1.5 rounded-full bg-white/10 text-main text-sm font-semibold">All (12)</button>
-                      <button className="px-4 py-1.5 rounded-full bg-transparent border border-white/10 text-sub hover:text-main hover:bg-white/5 text-sm font-medium transition-all">Published (8)</button>
-                      <button className="px-4 py-1.5 rounded-full bg-transparent border border-white/10 text-sub hover:text-main hover:bg-white/5 text-sm font-medium transition-all">Drafts (4)</button>
-                    </div>
-                    <div className="flex gap-2 bg-white/5 p-1 rounded-lg">
-                      <button className="p-1.5 bg-white/10 rounded-md text-main shadow"><Grid className="w-4 h-4" /></button>
-                      <button className="p-1.5 text-sub hover:text-main"><List className="w-4 h-4" /></button>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {works.map(work => (
-                      <div key={work.id} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all">
-                        <div className="aspect-[4/3] overflow-hidden relative">
-                          <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
-                          />
-                        </div>
-                        <div className="p-4">
-                          <h4 className="font-bold text-main group-hover:text-gold transition-colors mb-1">{work.title}</h4>
-                          <div className="flex justify-between items-center text-xs">
-                            <span className="text-sub">{work.genre}</span>
-                            <span className="text-gold/80 font-medium">Public</span>
+                    <div className="space-y-4">
+                      {[1, 2].map((i) => (
+                        <div key={i} className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-colors">
+                          <div className="flex gap-4">
+                            <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                              <img src={`/images/game${i}.png`} alt="Game" className="w-full h-full object-cover" 
+                                onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
+                              />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex justify-between items-start mb-1">
+                                <h4 className="font-bold text-main hover:text-[#818cf8] transition-colors cursor-pointer">{i === 1 ? 'Echoes of Eternity' : 'Crimson Protocol'}</h4>
+                                <div className="flex text-gold">
+                                  {[1,2,3,4,5].map(star => <div key={star}>★</div>)}
+                                </div>
+                              </div>
+                              <div className="text-xs text-sub mb-3 flex items-center gap-2">
+                                <Clock className="w-3 h-3" /> 120 hrs on record
+                              </div>
+                              <p className="text-sm text-sub/90 leading-relaxed">
+                                {i === 1 
+                                  ? "Absolutely stunning visual novel. The branching paths are incredibly well thought out and the art style is gorgeous. The true ending completely broke me. A must-play for fans of the genre."
+                                  : "Solid RPG mechanics with a unique twist on the ATB system. Starts a bit slow but by chapter 3 you're hooked. Music is top tier."}
+                              </p>
+                              <div className="mt-3 flex items-center gap-4 text-xs text-sub/60">
+                                <button className="flex items-center gap-1.5 hover:text-white transition-colors"><Heart className="w-3.5 h-3.5" /> 24 Helpful</button>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                    
-                    {/* Create New Card */}
-                    <div className="rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center aspect-[4/3] hover:border-gold/50 hover:bg-gold/5 transition-all cursor-pointer group">
-                      <div className="w-12 h-12 rounded-full bg-white/5 group-hover:bg-gold/20 flex items-center justify-center mb-3 transition-colors">
-                        <Edit3 className="w-5 h-5 text-sub group-hover:text-gold transition-colors" />
-                      </div>
-                      <span className="font-bold text-main group-hover:text-gold transition-colors">Create New Work</span>
+                      ))}
                     </div>
-                  </div>
+                  </section>
+
                 </div>
               )}
-              
+
               {/* Empty states for other tabs to show it's functional UI */}
-              {(activeTab === 'followed' || activeTab === 'activity') && (
+              {(activeTab === 'collections' || activeTab === 'activity') && (
                 <div className="h-64 flex flex-col items-center justify-center text-sub border border-white/5 rounded-2xl bg-white/[0.01] animate-in fade-in duration-500">
                   <Clock className="w-10 h-10 mb-4 opacity-20" />
                   <p>Content for {activeTab} will appear here.</p>
