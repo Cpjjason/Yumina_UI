@@ -128,6 +128,16 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
+              
+              <button className="w-full mt-4 flex items-center justify-between px-4 py-3 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:bg-white/[0.05] rounded-xl transition-all group">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold/20 transition-colors">
+                    <Edit3 className="w-4 h-4" />
+                  </div>
+                  <span className="font-semibold text-sm text-main">Creator Hub</span>
+                </div>
+                <ChevronRight className="w-4 h-4 text-sub group-hover:text-gold transition-colors" />
+              </button>
             </div>
 
             {/* Right Column - Content */}
@@ -395,6 +405,83 @@ export default function Profile() {
                           </label>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Account Links Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
+                          <LinkIcon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-main text-lg">Connected Accounts</h3>
+                          <p className="text-xs text-sub">Manage your linked social accounts and platforms.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div className="flex items-center gap-4">
+                            <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
+                              <span className="font-bold text-sm">X</span>
+                            </div>
+                            <div>
+                              <div className="font-semibold text-main">Twitter (X)</div>
+                              <div className="text-xs text-sub mt-1 text-gold">@noxlumina_dev</div>
+                            </div>
+                          </div>
+                          <button className="px-4 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-sm font-semibold transition-colors">
+                            Disconnect
+                          </button>
+                        </div>
+
+                         <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div className="flex items-center gap-4">
+                            <div className="w-8 h-8 rounded bg-[#5865F2] flex items-center justify-center text-white">
+                              <span className="font-bold text-sm">D</span>
+                            </div>
+                            <div>
+                              <div className="font-semibold text-main">Discord</div>
+                              <div className="text-xs text-sub mt-1">Not connected</div>
+                            </div>
+                          </div>
+                          <button className="px-4 py-1.5 rounded-lg bg-gold hover:bg-[#FCE38A] text-black text-sm font-bold transition-colors">
+                            Connect
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Notification Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
+                          <Clock className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-main text-lg">Notifications</h3>
+                          <p className="text-xs text-sub">How we contact you about activity on your account.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div>
+                            <div className="font-semibold text-main">Email Notifications</div>
+                            <div className="text-xs text-sub mt-1">Receive an email when someone comments on your work.</div>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" className="sr-only peer" defaultChecked />
+                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 mt-6 border-t border-white/10 flex justify-end">
+                      <button className="px-6 py-2 rounded-xl bg-gold hover:bg-[#FCE38A] text-black font-bold transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)]">
+                        Save Changes
+                      </button>
                     </div>
 
                   </div>
