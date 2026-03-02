@@ -163,9 +163,9 @@ export default function Profile() {
 
               {/* Tab Content */}
               {activeTab === 'overview' && (
-                <div className="space-y-10">
+                <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   
-                  {/* Pinned/Featured Work */}
+                  {/* Pinned/Featured Work (Optional highlight chosen by creator) */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
@@ -213,21 +213,21 @@ export default function Profile() {
                     </div>
                   </section>
 
-                  {/* Recent Works Grid */}
+                  {/* Recently Played */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
                         <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Recent Works
+                        Recently Played
                       </h2>
                       <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
                         View All <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {works.slice(0,2).map(work => (
-                        <div key={work.id} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all hover:bg-white/[0.04]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {works.map(work => (
+                        <div key={`played-${work.id}`} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all hover:bg-white/[0.04]">
                           <div className="aspect-[16/9] overflow-hidden relative">
                             <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
@@ -242,14 +242,45 @@ export default function Profile() {
                             <div className="flex justify-between items-start mb-1">
                               <h4 className="font-bold text-main group-hover:text-gold transition-colors">{work.title}</h4>
                             </div>
-                            <div className="text-xs text-sub mb-3">{work.genre}</div>
-                            <div className="flex items-center justify-between text-xs text-sub/60 pt-3 border-t border-white/5">
-                              <span className="flex items-center gap-1.5"><Play className="w-3.5 h-3.5" /> {work.plays}</span>
-                              <span className="flex items-center gap-1.5"><Heart className="w-3.5 h-3.5" /> {work.likes}</span>
+                            <div className="flex items-center gap-2 text-xs text-sub/60 mt-2">
+                              <Clock className="w-3.5 h-3.5" /> <span>Played {work.id * 2} hours ago</span>
                             </div>
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </section>
+
+                  {/* Collections / Favorites */}
+                  <section>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gold rounded-full"></div>
+                        Collections & Favorites
+                      </h2>
+                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                        View All <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all cursor-pointer">
+                        <div className="aspect-square bg-gradient-to-br from-gold/20 to-base p-4 flex flex-col justify-end relative overflow-hidden">
+                          <Heart className="w-6 h-6 text-gold mb-2" fill="currentColor" />
+                          <h4 className="font-bold text-main relative z-10">Favorite Games</h4>
+                          <span className="text-xs text-sub relative z-10">24 Items</span>
+                          <div className="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all cursor-pointer">
+                        <div className="aspect-square bg-gradient-to-br from-[#818cf8]/20 to-base p-4 flex flex-col justify-end relative overflow-hidden">
+                          <Clock className="w-6 h-6 text-[#818cf8] mb-2" />
+                          <h4 className="font-bold text-main relative z-10">Play Later</h4>
+                          <span className="text-xs text-sub relative z-10">12 Items</span>
+                          <div className="absolute top-0 right-0 w-24 h-24 bg-[#818cf8]/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2"></div>
+                        </div>
+                      </div>
                     </div>
                   </section>
                   
