@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState('overview');
+  const isCreator = true;
 
   const works = [
     { id: 1, title: "Echoes of Eternity", genre: "Visual Novel", plays: "12.4K", likes: "3.2K", image: "/images/game1.png" },
@@ -60,7 +61,9 @@ export default function Profile() {
               <div className="mb-2">
                 <h1 className="text-3xl font-black text-main flex items-center gap-3">
                   Nox_Lumina
-                  <span className="text-xs font-bold bg-gold/10 text-gold px-2 py-1 rounded-md uppercase tracking-wider">Creator</span>
+                  {isCreator && (
+                    <span className="text-xs font-bold bg-gold/10 text-gold px-2 py-1 rounded-md uppercase tracking-wider">Creator</span>
+                  )}
                 </h1>
                 <p className="text-sub mt-1">@noxlumina_dev</p>
               </div>
@@ -165,51 +168,103 @@ export default function Profile() {
               {activeTab === 'overview' && (
                 <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   
-                  {/* Pinned/Featured Work (Optional highlight chosen by creator) */}
+                  {/* Jump Back In (Player Focus) */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
                       <h2 className="text-lg font-bold text-main flex items-center gap-2">
                         <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Featured Work
+                        Jump Back In
                       </h2>
                     </div>
                     
-                    <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-gold/30 transition-colors">
-                      <div className="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden">
+                    <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-gold/30 transition-colors h-auto md:h-64">
+                      <div className="w-full md:w-2/5 aspect-video md:aspect-auto relative overflow-hidden">
                         <img 
-                          src="/images/game3.png" 
-                          alt="Astral Archives" 
+                          src="/images/game1.png" 
+                          alt="Echoes of Eternity" 
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                           onError={(e) => {
                             e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop";
                           }}
                         />
-                        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-gold uppercase tracking-wider">
-                          Editor's Choice
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-base/90 hidden md:block" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-base/90 to-transparent md:hidden" />
                       </div>
-                      <div className="p-6 md:w-3/5 flex flex-col justify-between">
-                        <div>
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-2xl font-bold text-main">Astral Archives</h3>
-                            <div className="flex gap-2">
-                              <span className="bg-white/5 border border-white/10 text-xs px-2 py-1 rounded-md text-sub">Card Game</span>
-                            </div>
+                      <div className="p-6 md:w-3/5 flex flex-col justify-center">
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <h3 className="text-2xl font-bold text-main">Echoes of Eternity</h3>
+                            <p className="text-sub text-sm mt-1">Chapter 3: The Lost City</p>
                           </div>
-                          <p className="text-sub text-sm leading-relaxed mb-6 line-clamp-3">
-                            Dive into the ancient astral library. Collect forbidden spells, battle corrupted guardians, and uncover the mysteries of the universe in this strategic deck-builder with deep lore.
-                          </p>
                         </div>
-                        <div className="flex items-center justify-between mt-auto">
-                          <div className="flex items-center gap-4 text-sm text-sub/80">
-                            <div className="flex items-center gap-1.5"><Play className="w-4 h-4 text-white/40" /> 45.1K Plays</div>
-                            <div className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-white/40" /> 12K Likes</div>
+                        
+                        <div className="mt-6 mb-2">
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-gold font-medium">65% Completed</span>
+                            <span className="text-sub">12h 45m</span>
                           </div>
-                          <button className="bg-white/10 hover:bg-white/20 text-main px-6 py-2 rounded-xl text-sm font-semibold transition-colors">
-                            Play Now
+                          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-full bg-gold rounded-full w-[65%]" />
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between mt-4">
+                          <div className="flex items-center gap-2 text-xs text-sub/60">
+                            <Clock className="w-3.5 h-3.5" /> <span>Last played yesterday</span>
+                          </div>
+                          <button className="bg-gold hover:bg-[#FCE38A] text-black px-6 py-2 rounded-xl text-sm font-bold transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)] flex items-center gap-2">
+                            <Play className="w-4 h-4" fill="currentColor" /> Continue
                           </button>
                         </div>
                       </div>
+                    </div>
+                  </section>
+
+                  {/* Recent Achievements */}
+                  <section>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gold rounded-full"></div>
+                        Recent Achievements
+                      </h2>
+                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
+                        View All <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {[
+                        { title: "First Blood", game: "Crimson Protocol", icon: "⚔️", time: "2h ago", rarity: "Common" },
+                        { title: "Master Collector", game: "Astral Archives", icon: "📚", time: "Yesterday", rarity: "Rare" },
+                        { title: "Speed Demon", game: "Echoes of Eternity", icon: "⚡", time: "3d ago", rarity: "Epic" },
+                        { title: "True Ending", game: "Echoes of Eternity", icon: "👑", time: "1w ago", rarity: "Legendary" },
+                      ].map((ach, i) => (
+                        <div key={i} className="group rounded-2xl bg-white/[0.02] border border-white/5 p-4 hover:border-gold/30 hover:bg-white/[0.04] transition-all cursor-pointer">
+                          <div className="flex gap-4 items-center mb-3">
+                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-inner shrink-0
+                              ${ach.rarity === 'Legendary' ? 'bg-gradient-to-br from-yellow-500/20 to-amber-600/20 shadow-yellow-500/10' : 
+                                ach.rarity === 'Epic' ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20 shadow-purple-500/10' : 
+                                ach.rarity === 'Rare' ? 'bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-blue-500/10' : 
+                                'bg-white/5'}`}
+                            >
+                              {ach.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-bold text-main text-sm truncate">{ach.title}</h4>
+                              <p className="text-xs text-sub truncate">{ach.game}</p>
+                            </div>
+                          </div>
+                          <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
+                            <span className={
+                              ach.rarity === 'Legendary' ? 'text-yellow-500' : 
+                              ach.rarity === 'Epic' ? 'text-purple-400' : 
+                              ach.rarity === 'Rare' ? 'text-blue-400' : 
+                              'text-sub'
+                            }>{ach.rarity}</span>
+                            <span className="text-sub/50">{ach.time}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </section>
 
@@ -284,6 +339,60 @@ export default function Profile() {
                     </div>
                   </section>
                   
+                  {/* Pinned/Featured Work (Only shown if user is a creator and has pinned something) */}
+                  {isCreator && (
+                    <section>
+                      <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                          <div className="w-1 h-4 bg-gold rounded-full"></div>
+                          Featured Work
+                        </h2>
+                        <span className="text-xs font-semibold bg-white/5 px-3 py-1 rounded-full text-sub border border-white/5 flex items-center gap-1.5">
+                          <Award className="w-3.5 h-3.5 text-gold" />
+                          Pinned by Creator
+                        </span>
+                      </div>
+                      
+                      <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col md:flex-row hover:border-gold/30 transition-colors">
+                        <div className="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden">
+                          <img 
+                            src="/images/game3.png" 
+                            alt="Astral Archives" 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            onError={(e) => {
+                              e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop";
+                            }}
+                          />
+                          <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-gold uppercase tracking-wider">
+                            Editor's Choice
+                          </div>
+                        </div>
+                        <div className="p-6 md:w-3/5 flex flex-col justify-between">
+                          <div>
+                            <div className="flex justify-between items-start mb-2">
+                              <h3 className="text-2xl font-bold text-main">Astral Archives</h3>
+                              <div className="flex gap-2">
+                                <span className="bg-white/5 border border-white/10 text-xs px-2 py-1 rounded-md text-sub">Card Game</span>
+                              </div>
+                            </div>
+                            <p className="text-sub text-sm leading-relaxed mb-6 line-clamp-3">
+                              Dive into the ancient astral library. Collect forbidden spells, battle corrupted guardians, and uncover the mysteries of the universe in this strategic deck-builder with deep lore.
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-between mt-auto">
+                            <div className="flex items-center gap-4 text-sm text-sub/80">
+                              <div className="flex items-center gap-1.5"><Play className="w-4 h-4 text-white/40" /> 45.1K Plays</div>
+                              <div className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-white/40" /> 12K Likes</div>
+                            </div>
+                            <button className="bg-white/10 hover:bg-white/20 text-main px-6 py-2 rounded-xl text-sm font-semibold transition-colors">
+                              Play Now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  )}
+
                   {/* Followed Authors */}
                   <section>
                     <div className="flex items-center justify-between mb-4">
