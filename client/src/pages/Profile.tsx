@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { MapPin, Link as LinkIcon, Calendar, Edit3, Settings, Share2, Play, Heart, Clock, Award, ChevronRight, Grid, List, Eye, Shield } from "lucide-react";
+import { MapPin, Link as LinkIcon, Calendar, Edit3, Settings, Share2, Play, Heart, Clock, Award, ChevronRight, Grid, List, Eye, Shield, Globe, Sliders, Database, Key, Check, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 export default function Profile() {
@@ -145,7 +145,7 @@ export default function Profile() {
               
               {/* Custom Tabs */}
               <div className="flex gap-8 border-b border-white/10 mb-8">
-                {['overview', 'works', 'followed', 'activity', 'settings'].map((tab) => (
+                {['overview', 'works', 'followed', 'activity', 'settings', 'config'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -407,6 +407,34 @@ export default function Profile() {
                       </div>
                     </div>
 
+                    {/* Personalization Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-main text-lg">Personalization</h3>
+                          <p className="text-xs text-sub">Language and regional preferences.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-xl">
+                          <div>
+                            <div className="font-semibold text-main">Language</div>
+                            <div className="text-xs text-sub mt-1">Select your preferred language.</div>
+                          </div>
+                          <select className="bg-white/5 border border-white/10 text-main text-sm rounded-lg focus:ring-gold focus:border-gold block p-2 outline-none cursor-pointer">
+                            <option value="en">English (US)</option>
+                            <option value="zh">中文 (简体)</option>
+                            <option value="ja">日本語</option>
+                            <option value="ko">한국語</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Account Links Section */}
                     <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
                       <div className="flex items-center gap-3 mb-6">
@@ -482,6 +510,182 @@ export default function Profile() {
                       <button className="px-6 py-2 rounded-xl bg-gold hover:bg-[#FCE38A] text-black font-bold transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)]">
                         Save Changes
                       </button>
+                    </div>
+
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'config' && (
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-3xl">
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <h2 className="text-xl font-bold text-main mb-1">Configs</h2>
+                    </div>
+                    <button className="text-sub hover:text-main text-sm transition-colors">
+                      Reset to defaults
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    {/* Generation Settings Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="mb-6">
+                        <h3 className="font-bold text-main text-lg mb-1">Generation Settings</h3>
+                        <p className="text-xs text-sub">Global defaults for AI generation.</p>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        {/* Context Size */}
+                        <div className="border-b border-white/5 pb-6">
+                          <div className="flex justify-between items-center mb-3">
+                            <label className="font-semibold text-main text-sm">Context / Memory Size</label>
+                            <span className="text-xs text-sub">200,000 tokens</span>
+                          </div>
+                          <input 
+                            type="text" 
+                            defaultValue="200000"
+                            className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-3 text-main focus:outline-none focus:border-gold/50 transition-colors"
+                          />
+                          <p className="text-xs text-sub mt-2">How many tokens of conversation history the AI can see (4,096 - 2,000,000)</p>
+                        </div>
+
+                        {/* Response Length */}
+                        <div className="border-b border-white/5 pb-6">
+                          <div className="flex justify-between items-center mb-3">
+                            <label className="font-semibold text-main text-sm">Response Length</label>
+                            <span className="text-xs text-sub">12,000 tokens</span>
+                          </div>
+                          <input 
+                            type="text" 
+                            defaultValue="12000"
+                            className="w-full bg-white/[0.02] border border-white/5 rounded-xl px-4 py-3 text-main focus:outline-none focus:border-gold/50 transition-colors"
+                          />
+                          <p className="text-xs text-sub mt-2">Maximum tokens per AI response (256 - 32,768)</p>
+                        </div>
+
+                        {/* Creativity / Temperature */}
+                        <div className="border-b border-white/5 pb-6">
+                          <div className="flex justify-between items-center mb-4">
+                            <label className="font-semibold text-main text-sm">Creativity / Temperature</label>
+                            <span className="text-xs text-sub">1.0</span>
+                          </div>
+                          <div className="relative w-full h-1.5 bg-white/10 rounded-full mb-3">
+                            <div className="absolute top-0 left-0 h-full w-1/2 bg-gold rounded-full"></div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gold rounded-full shadow-[0_0_10px_rgba(243,211,97,0.5)]"></div>
+                          </div>
+                          <div className="flex justify-between text-xs text-sub">
+                            <span>Precise (0)</span>
+                            <span>Creative (2)</span>
+                          </div>
+                        </div>
+
+                        {/* Streaming Toggle */}
+                        <div className="flex items-center justify-between pb-2">
+                          <div>
+                            <div className="font-semibold text-main text-sm">Streaming</div>
+                            <div className="text-xs text-sub mt-1">Show AI responses as they generate</div>
+                          </div>
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" className="sr-only peer" defaultChecked />
+                            <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-transparent after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-transparent after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold border border-white/10"></div>
+                          </label>
+                        </div>
+                        
+                        <div className="pt-2">
+                          <button className="flex items-center gap-2 text-sub hover:text-main text-sm font-medium transition-colors">
+                            <ChevronRight className="w-4 h-4" />
+                            Advanced Parameters
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Default Model Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="mb-5">
+                        <h3 className="flex items-center gap-2 font-bold text-main text-lg mb-1">
+                          <Database className="w-5 h-5" />
+                          Default Model
+                        </h3>
+                        <p className="text-xs text-sub">Choose the AI model used for all conversations.</p>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        <div className="p-4 border border-white/5 rounded-xl bg-white/[0.01] hover:bg-white/[0.03] cursor-pointer transition-colors">
+                          <div className="font-bold text-main text-sm">Gemini 3.1 Pro</div>
+                          <div className="text-xs text-sub mt-1">Best overall</div>
+                        </div>
+                        
+                        <div className="p-4 border border-gold/30 rounded-xl bg-gold/5 cursor-pointer flex justify-between items-center transition-colors">
+                          <div>
+                            <div className="font-bold text-main text-sm">Claude Opus 4.5</div>
+                            <div className="text-xs text-sub mt-1 text-gold/80">Creative powerhouse</div>
+                          </div>
+                          <Check className="w-5 h-5 text-gold" />
+                        </div>
+
+                        <div className="p-4 border border-white/5 rounded-xl bg-white/[0.01] hover:bg-white/[0.03] cursor-pointer transition-colors">
+                          <div className="font-bold text-main text-sm">Grok 4.1 Fast</div>
+                          <div className="text-xs text-sub mt-1">Fast & efficient</div>
+                        </div>
+                        
+                        <button className="flex items-center gap-2 text-sub hover:text-main text-sm font-medium transition-colors p-2 w-full text-left mt-2">
+                          <Database className="w-4 h-4" />
+                          Browse all models...
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* API Keys Section */}
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                      <div className="mb-5">
+                        <h3 className="flex items-center gap-2 font-bold text-main text-lg mb-1">
+                          <Key className="w-5 h-5" />
+                          API Keys
+                        </h3>
+                        <p className="text-xs text-sub">Manage your LLM provider API keys. Keys are encrypted at rest.</p>
+                      </div>
+                      
+                      <div className="flex gap-3 mb-2">
+                        <select className="bg-white/[0.02] border border-white/5 text-main rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold/50 min-w-[140px] appearance-none cursor-pointer">
+                          <option>OpenRouter</option>
+                          <option>OpenAI</option>
+                          <option>Anthropic</option>
+                        </select>
+                        <input 
+                          type="text" 
+                          placeholder="Default"
+                          className="bg-white/[0.02] border border-white/5 rounded-xl px-4 py-3 text-sm text-main focus:outline-none focus:border-gold/50 w-32"
+                        />
+                        <input 
+                          type="text" 
+                          placeholder="sk-or-v1-..."
+                          className="bg-white/[0.02] border border-white/5 rounded-xl px-4 py-3 text-sm text-main focus:outline-none focus:border-gold/50 flex-1 font-mono"
+                        />
+                        <button className="w-[46px] h-[46px] bg-gold/10 hover:bg-gold/20 text-gold rounded-xl flex items-center justify-center transition-colors">
+                          <Plus className="w-5 h-5" />
+                        </button>
+                      </div>
+                      <p className="text-xs text-sub mb-6">Get your API key from <a href="#" className="text-gold hover:underline">OpenRouter</a></p>
+
+                      <div className="p-4 border border-white/5 rounded-xl bg-white/[0.02] flex items-center justify-between">
+                        <div>
+                          <div className="flex items-center gap-3 mb-1">
+                            <span className="font-bold text-main text-sm">Default</span>
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#6366f1]/20 text-[#818cf8] uppercase tracking-wider">openrouter</span>
+                          </div>
+                          <div className="text-xs text-sub/60">2/22/2026</div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <button className="px-4 py-1.5 rounded-lg border border-white/10 text-main text-sm font-semibold hover:bg-white/5 transition-colors">
+                            Verify
+                          </button>
+                          <button className="p-2 text-sub hover:text-destructive transition-colors">
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
                     </div>
 
                   </div>
