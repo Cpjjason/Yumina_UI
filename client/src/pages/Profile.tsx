@@ -63,12 +63,12 @@ export default function Profile() {
               
               <div className="mb-2">
                 <h1 className="text-3xl font-black text-main flex items-center gap-3">
-                  Nox_Lumina
+                  shabichengpeijie
                   {isCreator && (
                     <span className="text-xs font-bold bg-gold/10 text-gold px-2 py-1 rounded-md uppercase tracking-wider">Creator</span>
                   )}
                 </h1>
-                <p className="text-sub mt-1">@noxlumina_dev</p>
+                <p className="text-sub mt-1">@shabichengpeijie_dev</p>
               </div>
             </div>
 

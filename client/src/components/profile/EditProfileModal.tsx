@@ -136,7 +136,7 @@ export default function EditProfileModal({ isOpen, onClose }: EditProfileModalPr
                   <Label htmlFor="display-name" className="text-sub font-semibold text-xs uppercase tracking-wider">Display Name</Label>
                   <Input 
                     id="display-name" 
-                    defaultValue="Nox_Lumina" 
+                    defaultValue="shabichengpeijie" 
                     className="bg-white/[0.02] border-white/10 text-main h-12 rounded-xl focus-visible:ring-gold/50 focus-visible:border-gold/50 transition-colors"
                   />
                 </div>
@@ -144,7 +144,7 @@ export default function EditProfileModal({ isOpen, onClose }: EditProfileModalPr
                   <Label htmlFor="username" className="text-sub font-semibold text-xs uppercase tracking-wider">Username</Label>
                   <Input 
                     id="username" 
-                    defaultValue="@noxlumina_dev" 
+                    defaultValue="@shabichengpeijie_dev" 
                     className="bg-white/[0.02] border-white/10 text-main h-12 rounded-xl focus-visible:ring-gold/50 focus-visible:border-gold/50 transition-colors"
                   />
                 </div>
