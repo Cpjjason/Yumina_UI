@@ -84,9 +84,6 @@ export default function Profile() {
                 <Settings className="w-4 h-4" />
                 Edit Profile
               </button>
-              <button className="px-6 py-2 rounded-xl bg-gold hover:bg-[#FCE38A] text-black font-bold text-sm transition-colors shadow-[0_0_15px_rgba(243,211,97,0.2)]">
-                Follow
-              </button>
             </div>
           </div>
 
