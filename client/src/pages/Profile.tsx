@@ -197,30 +197,47 @@ export default function Profile() {
                       </h2>
                     </div>
                     
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Followers</div>
-                        <div className="text-xl font-bold text-main">14.2K</div>
-                      </div>
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Following</div>
-                        <div className="text-xl font-bold text-main">248</div>
-                      </div>
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Library</div>
-                        <div className="text-xl font-bold text-main">156</div>
-                      </div>
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Reviews</div>
-                        <div className="text-xl font-bold text-main">84</div>
-                      </div>
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Likes</div>
-                        <div className="text-xl font-bold text-main">45K</div>
-                      </div>
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
-                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Recent 2 Weeks</div>
-                        <div className="text-xl font-bold text-main">42.5h</div>
+                    <div className="bg-white/[0.02] border border-white/5 rounded-2xl relative overflow-hidden group hover:border-gold/30 transition-all duration-300 shadow-lg">
+                      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-gold/20 via-gold to-gold/20 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="p-6 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+                        {/* Highlighted Stat - Recent 2 Weeks */}
+                        <div className="flex-shrink-0">
+                          <div className="text-sub/70 text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                            <Clock className="w-3.5 h-3.5 text-gold" />
+                            Recent 2 Weeks
+                          </div>
+                          <div className="text-4xl font-black text-white flex items-baseline gap-1 tracking-tight">
+                            42.5<span className="text-xl text-sub font-bold">h</span>
+                          </div>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="hidden md:block w-px h-16 bg-white/10"></div>
+                        <div className="md:hidden w-full h-px bg-white/10"></div>
+                        
+                        {/* Other Stats */}
+                        <div className="flex-1 grid grid-cols-2 sm:grid-cols-5 gap-6 w-full">
+                          <div className="flex flex-col">
+                            <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Followers</div>
+                            <div className="text-xl font-bold text-main">14.2K</div>
+                          </div>
+                          <div className="flex flex-col">
+                            <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Following</div>
+                            <div className="text-xl font-bold text-main">248</div>
+                          </div>
+                          <div className="flex flex-col">
+                            <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Library</div>
+                            <div className="text-xl font-bold text-main">156</div>
+                          </div>
+                          <div className="flex flex-col">
+                            <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Reviews</div>
+                            <div className="text-xl font-bold text-main">84</div>
+                          </div>
+                          <div className="flex flex-col">
+                            <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Likes</div>
+                            <div className="text-xl font-bold text-main">45K</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </section>
