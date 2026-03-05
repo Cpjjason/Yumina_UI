@@ -113,25 +113,42 @@ export default function Profile() {
                 </div>
               </div>
 
+              {/* Achievements Sidebar */}
               <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-main mb-4">Platform Stats</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Followers</div>
-                    <div className="text-xl font-bold text-main">14.2K</div>
-                  </div>
-                  <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Following</div>
-                    <div className="text-xl font-bold text-main">248</div>
-                  </div>
-                  <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Library</div>
-                    <div className="text-xl font-bold text-main">156</div>
-                  </div>
-                  <div>
-                    <div className="text-sub/60 text-xs font-semibold uppercase tracking-wider mb-1">Likes</div>
-                    <div className="text-xl font-bold text-main">45K</div>
-                  </div>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-sm font-bold text-main">Achievements</h3>
+                  <button className="text-xs font-semibold text-sub hover:text-gold transition-colors">View All</button>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { title: "First Blood", game: "Crimson Protocol", icon: "⚔️", rarity: "Common" },
+                    { title: "Master Collector", game: "Astral Archives", icon: "📚", rarity: "Rare" },
+                    { title: "Speed Demon", game: "Echoes of Eternity", icon: "⚡", rarity: "Epic" },
+                    { title: "True Ending", game: "Echoes of Eternity", icon: "👑", rarity: "Legendary" },
+                  ].map((ach, i) => (
+                    <div key={i} className="flex gap-3 items-center group cursor-pointer">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg shadow-inner shrink-0
+                        ${ach.rarity === 'Legendary' ? 'bg-gradient-to-br from-yellow-500/20 to-amber-600/20 shadow-yellow-500/10' : 
+                          ach.rarity === 'Epic' ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20 shadow-purple-500/10' : 
+                          ach.rarity === 'Rare' ? 'bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-blue-500/10' : 
+                          'bg-white/5'}`}
+                      >
+                        {ach.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-main text-xs truncate group-hover:text-gold transition-colors">{ach.title}</h4>
+                        <div className="flex justify-between items-center mt-0.5">
+                          <p className="text-[10px] text-sub truncate">{ach.game}</p>
+                          <span className={`text-[9px] uppercase font-bold tracking-wider ${
+                            ach.rarity === 'Legendary' ? 'text-yellow-500' : 
+                            ach.rarity === 'Epic' ? 'text-purple-400' : 
+                            ach.rarity === 'Rare' ? 'text-blue-400' : 
+                            'text-sub'
+                          }`}>{ach.rarity}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               
@@ -171,7 +188,42 @@ export default function Profile() {
               {activeTab === 'overview' && (
                 <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   
-
+                  {/* Platform Stats */}
+                  <section>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
+                        <div className="w-1 h-4 bg-gold rounded-full"></div>
+                        Platform Stats
+                      </h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Followers</div>
+                        <div className="text-xl font-bold text-main">14.2K</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Following</div>
+                        <div className="text-xl font-bold text-main">248</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Library</div>
+                        <div className="text-xl font-bold text-main">156</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Reviews</div>
+                        <div className="text-xl font-bold text-main">84</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Likes</div>
+                        <div className="text-xl font-bold text-main">45K</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 hover:border-gold/30 transition-colors">
+                        <div className="text-sub/60 text-[10px] font-bold uppercase tracking-wider mb-1">Recent 2 Weeks</div>
+                        <div className="text-xl font-bold text-main">42.5h</div>
+                      </div>
+                    </div>
+                  </section>
 
                   {/* Recently Played */}
                   <section>
@@ -210,56 +262,6 @@ export default function Profile() {
                       ))}
                     </div>
                   </section>
-
-                  {/* Achievements */}
-                  <section>
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Achievements
-                      </h2>
-                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
-                        View All <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {[
-                        { title: "First Blood", game: "Crimson Protocol", icon: "⚔️", time: "2h ago", rarity: "Common" },
-                        { title: "Master Collector", game: "Astral Archives", icon: "📚", time: "Yesterday", rarity: "Rare" },
-                        { title: "Speed Demon", game: "Echoes of Eternity", icon: "⚡", time: "3d ago", rarity: "Epic" },
-                        { title: "True Ending", game: "Echoes of Eternity", icon: "👑", time: "1w ago", rarity: "Legendary" },
-                      ].map((ach, i) => (
-                        <div key={i} className="group rounded-2xl bg-white/[0.02] border border-white/5 p-4 hover:border-gold/30 hover:bg-white/[0.04] transition-all cursor-pointer">
-                          <div className="flex gap-4 items-center mb-3">
-                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-inner shrink-0
-                              ${ach.rarity === 'Legendary' ? 'bg-gradient-to-br from-yellow-500/20 to-amber-600/20 shadow-yellow-500/10' : 
-                                ach.rarity === 'Epic' ? 'bg-gradient-to-br from-purple-500/20 to-purple-600/20 shadow-purple-500/10' : 
-                                ach.rarity === 'Rare' ? 'bg-gradient-to-br from-blue-500/20 to-blue-600/20 shadow-blue-500/10' : 
-                                'bg-white/5'}`}
-                            >
-                              {ach.icon}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-bold text-main text-sm truncate">{ach.title}</h4>
-                              <p className="text-xs text-sub truncate">{ach.game}</p>
-                            </div>
-                          </div>
-                          <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-wider">
-                            <span className={
-                              ach.rarity === 'Legendary' ? 'text-yellow-500' : 
-                              ach.rarity === 'Epic' ? 'text-purple-400' : 
-                              ach.rarity === 'Rare' ? 'text-blue-400' : 
-                              'text-sub'
-                            }>{ach.rarity}</span>
-                            <span className="text-sub/50">{ach.time}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
-
-
 
                   {/* Reviews & Activity */}
                   <section>
