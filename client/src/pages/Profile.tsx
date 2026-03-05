@@ -168,7 +168,7 @@ export default function Profile() {
               
               {/* Custom Tabs */}
               <div className="flex gap-8 border-b border-white/10 mb-8">
-                {['overview', 'works', 'followed', 'activity', 'settings', 'config'].map((tab) => (
+                {['overview', 'settings', 'config'].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -280,60 +280,6 @@ export default function Profile() {
                     </div>
                   </section>
 
-                  {/* Reviews & Activity */}
-                  <section>
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Recent Reviews
-                      </h2>
-                      <button className="text-sm font-semibold text-sub hover:text-gold transition-colors flex items-center gap-1">
-                        View All <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-gold/30 hover:bg-white/[0.04] transition-all">
-                        <div className="flex gap-4">
-                          <img src="/images/game2.png" className="w-16 h-16 rounded-xl object-cover" alt="Crimson Protocol" 
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
-                          />
-                          <div className="flex-1">
-                            <div className="flex justify-between items-start mb-1">
-                              <h4 className="font-bold text-main">Crimson Protocol</h4>
-                              <span className="text-xs text-sub">3 days ago</span>
-                            </div>
-                            <div className="flex text-gold mb-2 text-sm">
-                              ★★★★★
-                            </div>
-                            <p className="text-sm text-sub leading-relaxed line-clamp-2">
-                              The combat system is incredibly deep. I spent over 40 hours just experimenting with different build combinations. The art style matches the grimdark aesthetic perfectly. Highly recommended for fans of tactical RPGs.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 hover:border-gold/30 hover:bg-white/[0.04] transition-all">
-                        <div className="flex gap-4">
-                          <div className="w-16 h-16 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                            <Award className="w-8 h-8 text-sub/50" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex justify-between items-start mb-1">
-                              <h4 className="font-bold text-main">Astral Archives</h4>
-                              <span className="text-xs text-sub">1 week ago</span>
-                            </div>
-                            <div className="flex text-gold mb-2 text-sm">
-                              ★★★★☆
-                            </div>
-                            <p className="text-sm text-sub leading-relaxed line-clamp-2">
-                              Great deckbuilding mechanics with a steep but rewarding learning curve. The story gets really interesting around chapter 2. Docking one star because some late-game bosses feel a bit RNG-heavy, but overall a solid experience.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
 
                   {/* Collections / Favorites */}
                   <section>
@@ -422,88 +368,10 @@ export default function Profile() {
                     </section>
                   )}
 
-                  {/* Followed Authors */}
-                  <section>
-                    <div className="flex items-center justify-between mb-4">
-                      <h2 className="text-lg font-bold text-main flex items-center gap-2">
-                        <div className="w-1 h-4 bg-gold rounded-full"></div>
-                        Followed Creators
-                      </h2>
-                    </div>
-                    
-                    <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-                      {following.map(user => (
-                        <div key={user.id} className="min-w-[140px] bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col items-center text-center hover:bg-white/[0.05] transition-colors cursor-pointer group">
-                          <img src={user.image} alt={user.name} className="w-16 h-16 rounded-full object-cover mb-3 ring-2 ring-transparent group-hover:ring-gold/50 transition-all" 
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"; }}
-                          />
-                          <h5 className="font-bold text-sm text-main group-hover:text-gold transition-colors">{user.name}</h5>
-                          <span className="text-xs text-sub mt-1">{user.role}</span>
-                        </div>
-                      ))}
-                      
-                      <div className="min-w-[140px] bg-white/[0.01] border border-white/5 border-dashed rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/[0.03] transition-colors cursor-pointer text-sub hover:text-main">
-                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-2">
-                          <ChevronRight className="w-5 h-5" />
-                        </div>
-                        <span className="text-xs font-semibold">View All 248</span>
-                      </div>
-                    </div>
-                  </section>
 
                 </div>
               )}
 
-              {activeTab === 'works' && (
-                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex gap-2">
-                      <button className="px-4 py-1.5 rounded-full bg-white/10 text-main text-sm font-semibold">All (12)</button>
-                      <button className="px-4 py-1.5 rounded-full bg-transparent border border-white/10 text-sub hover:text-main hover:bg-white/5 text-sm font-medium transition-all">Published (8)</button>
-                      <button className="px-4 py-1.5 rounded-full bg-transparent border border-white/10 text-sub hover:text-main hover:bg-white/5 text-sm font-medium transition-all">Drafts (4)</button>
-                    </div>
-                    <div className="flex gap-2 bg-white/5 p-1 rounded-lg">
-                      <button className="p-1.5 bg-white/10 rounded-md text-main shadow"><Grid className="w-4 h-4" /></button>
-                      <button className="p-1.5 text-sub hover:text-main"><List className="w-4 h-4" /></button>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {works.map(work => (
-                      <div key={work.id} className="group rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-gold/30 transition-all">
-                        <div className="aspect-[4/3] overflow-hidden relative">
-                          <img src={work.image} alt={work.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2000&auto=format&fit=crop"; }}
-                          />
-                        </div>
-                        <div className="p-4">
-                          <h4 className="font-bold text-main group-hover:text-gold transition-colors mb-1">{work.title}</h4>
-                          <div className="flex justify-between items-center text-xs">
-                            <span className="text-sub">{work.genre}</span>
-                            <span className="text-gold/80 font-medium">Public</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                    
-                    {/* Create New Card */}
-                    <div className="rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center aspect-[4/3] hover:border-gold/50 hover:bg-gold/5 transition-all cursor-pointer group">
-                      <div className="w-12 h-12 rounded-full bg-white/5 group-hover:bg-gold/20 flex items-center justify-center mb-3 transition-colors">
-                        <Edit3 className="w-5 h-5 text-sub group-hover:text-gold transition-colors" />
-                      </div>
-                      <span className="font-bold text-main group-hover:text-gold transition-colors">Create New Work</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {/* Empty states for other tabs to show it's functional UI */}
-              {(activeTab === 'followed' || activeTab === 'activity') && (
-                <div className="h-64 flex flex-col items-center justify-center text-sub border border-white/5 rounded-2xl bg-white/[0.01] animate-in fade-in duration-500">
-                  <Clock className="w-10 h-10 mb-4 opacity-20" />
-                  <p>Content for {activeTab} will appear here.</p>
-                </div>
-              )}
 
               {activeTab === 'settings' && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-2xl">
